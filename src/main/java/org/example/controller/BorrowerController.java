@@ -6,6 +6,7 @@ import org.example.entity.BorrowerEntity;
 import org.example.service.BorrowerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,4 +28,12 @@ public class BorrowerController {
     public Iterable<BorrowerEntity> getBooK() {
         return service.getBorrower();
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteBorrower(@PathVariable Long id){
+        return service.deleteBorrower(id) ?
+                     ResponseEntity.ok("Delete"):
+                     ResponseEntity.notFound().build();
+    }
+
 }

@@ -7,10 +7,9 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Setter
-@Getter
 @Entity
 public class BorrowerEntity {
 
@@ -25,14 +24,7 @@ public class BorrowerEntity {
     private String nic;
 
 
-    public BorrowerEntity(Long id, String bid, String name, String contact, String address, String nic) {
-        this.id = id;
-        this.bid = bid;
-        this.name = name;
-        this.contact = contact;
-        this.address = address;
-        this.nic = nic;
-    }
+
 }
 
 
