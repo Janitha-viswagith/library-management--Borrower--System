@@ -15,11 +15,13 @@ public class BorrowerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String bid;
     private String name;
-    private String contact;
+    private String contactNumber;
+    private String contactEmail;
     private String address;
     private String nic;
 
