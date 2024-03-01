@@ -4,29 +4,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
-public class BorrowerEntity {
-
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String bid;
-    private String name;
-    private String contactNumber;
-    private String contactEmail;
+    private String fistName;
+    private String lastName;
+    private String username;
+    private String email;
     private String address;
-    private String nic;
-
-
+    private String address2;
+    private String country;
+    private String phoneNumber;
 
 }
-
-

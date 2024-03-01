@@ -1,0 +1,45 @@
+package org.example.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.example.dto.User;
+import org.example.entity.UserEntity;
+import org.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/user")
+@RequiredArgsConstructor
+@CrossOrigin
+public class UserController {
+
+@Autowired
+  final UserService service;
+    @GetMapping("/get-All-User")
+    public List<UserEntity> getAllUsers(){
+        return service.getAllUsers();
+
+    }
+
+    @PostMapping("/add-user")
+    public void addUser(@RequestBody User user){
+        service.addUser(user);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteUser(@PathVariable Long id){
+        service.deleteById(id);
+    }
+
+    @GetMapping("/find-by-user-name/{username}")
+    public User findByUsername(@PathVariable String username){
+        return service.findByUsername(username);
+    }
+
+    @GetMapping("/is-exists-user/{username}")
+    public Boolean isExistsUser(@PathVariable String username){
+       return service.isExistsUser(username);
+    }
+}
