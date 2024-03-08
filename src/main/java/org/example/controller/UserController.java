@@ -1,8 +1,10 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.dto.Login;
 import org.example.dto.User;
 import org.example.entity.UserEntity;
+import org.example.service.LoginService;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ public class UserController {
 
 @Autowired
   final UserService service;
+  final LoginService loginService;
     @GetMapping("/get-All-User")
     public List<UserEntity> getAllUsers(){
         return service.getAllUsers();
@@ -26,6 +29,7 @@ public class UserController {
     @PostMapping("/add-user")
     public void addUser(@RequestBody User user){
         service.addUser(user);
+        loginService.insertLoginData(new Login(user.getEmail(), user.getPassword()));
     }
 
     @DeleteMapping("/delete/{id}")
